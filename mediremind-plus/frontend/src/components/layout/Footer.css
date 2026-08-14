@@ -1,0 +1,104 @@
+.mr-footer {
+  background: var(--mr-white);
+  border: 2px solid var(--mr-blue-light);
+  border-radius: 20px;
+  margin: 24px;
+  overflow: hidden;
+}
+
+.mr-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mr-footer-logo {
+  color: var(--mr-navy);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.mr-footer-contact {
+  display: flex;
+  gap: 20px;
+  font-size: 0.72rem;
+  color: var(--mr-text-dark);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.mr-footer-locality {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.mr-footer-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--mr-text-dark);
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mr-footer-hospital-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 10;
+  background: #fff;
+  border: 1px solid #dfe8f8;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+  padding: 12px;
+  min-width: 260px;
+}
+
+.mr-footer-hospital-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mr-footer-hospital-item {
+  display: inline-flex;
+  align-items: center;
+  background: #edf3ff;
+  color: var(--mr-navy);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.68rem;
+  line-height: 1.2;
+}
+
+.mr-footer-links {
+  background: var(--mr-blue-light);
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mr-footer-links a {
+  color: var(--mr-white);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.mr-footer-links a:hover,
+.mr-footer-links a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+}

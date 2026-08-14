@@ -1,0 +1,25 @@
+:root {
+  --mr-navy: #1B2A6B;
+  --mr-blue: #2F6FED;
+  --mr-blue-light: #4FA3E3;
+  --mr-mint-bg: #DCEEEC;
+  --mr-coral: #FF7A5C;
+  --mr-green: #34C77B;
+  --mr-white: #FFFFFF;
+  --mr-text-dark: #16213E;
+  --mr-text-muted: #6B7A99;
+  --mr-radius-lg: 28px;
+  --mr-radius-full: 999px;
+  --mr-font: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--mr-font);
+  color: var(--mr-text-dark);
+  background: var(--mr-mint-bg);
+}

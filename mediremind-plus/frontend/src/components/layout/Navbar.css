@@ -1,0 +1,82 @@
+.mr-navbar {
+  background: var(--mr-white);
+  padding: 16px 32px 0;
+}
+
+.mr-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+}
+
+.mr-logo {
+  color: var(--mr-blue);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+}
+
+.mr-topbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.mr-user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mr-username {
+  font-size: 0.9rem;
+  color: var(--mr-text-dark);
+}
+
+.mr-logout {
+  background: transparent;
+  border: 1px solid var(--mr-blue);
+  color: var(--mr-blue);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mr-topbar-item {
+  font-size: 0.75rem;
+  color: var(--mr-text-dark);
+  white-space: nowrap;
+}
+
+.mr-navpill {
+  background: var(--mr-navy);
+  border-radius: var(--mr-radius-full);
+  padding: 14px 32px;
+  display: flex;
+  gap: 32px;
+}
+
+.mr-navpill a {
+  color: var(--mr-white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.mr-navpill a:hover,
+.mr-navpill a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .mr-topbar-links {
+    display: none;
+  }
+  .mr-navpill {
+    gap: 16px;
+    padding: 12px 20px;
+    overflow-x: auto;
+  }
+}
