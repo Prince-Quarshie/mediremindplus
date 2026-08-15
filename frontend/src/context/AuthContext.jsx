@@ -21,13 +21,13 @@ export function AuthProvider({ children }) {
   }, []);
 
   const signup = async (formData) => {
-    const res = await api.post('/auth/signup', formData);
+    const res = await api.post('https://mediremindplus.onrender.com/auth/signup', formData);
     localStorage.setItem('token', res.data.token);
     setUser(res.data.user);
   };
 
   const login = async (email, password) => {
-    const res = await api.post('/auth/login', { email, password });
+    const res = await api.post('https://mediremindplus.onrender.com/auth/login', { email, password });
     localStorage.setItem('token', res.data.token);
     setUser(res.data.user);
   };

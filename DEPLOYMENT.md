@@ -14,6 +14,42 @@ Your application will be deployed as two separate projects on Vercel:
 - **Frontend**: Deployed to Vercel
 - **Backend**: Deployed to Render or Railway (recommended)
 
+## Connect the current deployments
+
+The deployed Render API is available at `https://mediremindplus.onrender.com`.
+Its routes are under `/api`, so the frontend must use this exact API base URL:
+
+```text
+https://mediremindplus.onrender.com/api
+```
+
+1. In the **frontend Vercel project**, open **Settings → Environment Variables** and set:
+
+   ```text
+   VITE_API_URL=https://mediremindplus.onrender.com/api
+   ```
+
+   Apply it to **Production** (and Preview too, if you test Vercel preview deployments).
+   Vite embeds `VITE_` variables during the build, so redeploy the frontend after saving it.
+
+2. In the **backend Render project**, open **Environment** and set `FRONTEND_URL` to the exact frontend origin, with no trailing slash:
+
+   ```text
+   FRONTEND_URL=https://your-frontend-project.vercel.app
+   ```
+
+   If you also use a custom domain or local Vite development, separate origins with commas:
+
+   ```text
+   FRONTEND_URL=https://your-frontend-project.vercel.app,https://www.your-domain.com,http://localhost:5173
+   ```
+
+   Save the variable and redeploy/restart the backend service.
+
+3. Open the deployed frontend and sign in. A successful request will go to
+   `https://mediremindplus.onrender.com/api/...`; do not enter only the Render
+   domain or append a trailing slash.
+
 ## Prerequisites
 1. Vercel account ([create one](https://vercel.com/signup))
 2. GitHub account with your code pushed
@@ -68,7 +104,7 @@ Then redeploy.
    - **MONGO_URI**: Your MongoDB Atlas connection string
    - **JWT_SECRET**: Random string (run `openssl rand -base64 32`)
    - **JWT_EXPIRES_IN**: `7d`
-   - **FRONTEND_URL**: Your Vercel frontend URL (e.g., `https://your-app.vercel.app`)
+   - **FRONTEND_URL**: Your Vercel frontend URL (e.g., `https://your-app.vercel.app`). Do not include a trailing slash.
    - **NODE_ENV**: `production`
 7. Click "Create Web Service"
 
@@ -82,7 +118,7 @@ Then redeploy.
    - **MONGO_URI**: Your MongoDB connection string
    - **JWT_SECRET**: Random string
    - **JWT_EXPIRES_IN**: `7d`
-   - **FRONTEND_URL**: Your Vercel URL
+   - **FRONTEND_URL**: Your Vercel URL (no trailing slash)
    - **NODE_ENV**: `production`
 6. Set root directory to `backend`
 7. Deploy
@@ -122,8 +158,9 @@ Once complete:
 ## Troubleshooting
 
 ### CORS Errors
-- Verify `FRONTEND_URL` in backend environment variables
-- Restart backend after updating
+- Verify `FRONTEND_URL` exactly matches the browser address of the frontend, including `https://` and without a trailing slash
+- For more than one frontend address, separate origins with commas
+- Restart/redeploy the backend after updating the variable
 
 ### Database Connection Fails
 - Check MongoDB Atlas IP whitelist

@@ -9,11 +9,26 @@ const medicationRoutes = require('./routes/medicationRoutes');
 
 const app = express();
 
-// Configure CORS for production and development
+// FRONTEND_URL accepts one or more comma-separated browser origins.
+// Example: https://your-app.vercel.app,http://localhost:5173
+const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
+  .split(',')
+  .map((origin) => origin.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+
+// Configure CORS for production and development.
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin(origin, callback) {
+    // Requests without an Origin header (health checks, curl, server-to-server)
+    // are not browser cross-origin requests and can proceed.
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`CORS blocked request from origin: ${origin}`));
+  },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 

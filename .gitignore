@@ -1,5 +1,6 @@
 node_modules
 mediremind-plus/
+.env
 .env.local
 .env.*.local
 dist/
