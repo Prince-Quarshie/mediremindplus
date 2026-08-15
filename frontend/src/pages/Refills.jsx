@@ -87,7 +87,7 @@ export default function Refills() {
         medicationName: lowStock.map((med) => med.name).join(', '),
         quantity: Math.min(...lowStock.map((med) => Number(med.quantity) || 0)),
       };
-      await api.post('/caregivers/low-stock-alert', payload);
+      await api.post('https://mediremindplus.onrender.com/api/caregivers/low-stock-alert', payload);
       setWarning('Low stock alert sent to your caregiver/family member.');
     } catch (err) {
       setError('Could not notify caregiver.');

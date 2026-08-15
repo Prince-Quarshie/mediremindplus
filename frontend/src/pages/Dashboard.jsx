@@ -189,7 +189,7 @@ function AddMedicationPanel({ onAdded }) {
     if (!form.name.trim()) return;
     setAdding(true); setError(''); setSuccess('');
     try {
-      await api.post('/medications', {
+      await api.post('https://mediremindplus.onrender.com/api/medications', {
         name: form.name.trim(),
         dosage: form.dosage.trim(),
         scheduledTime: form.scheduledTime,
@@ -580,7 +580,7 @@ export default function Dashboard() {
   const handleInviteCaregiver = async (e) => {
     e.preventDefault(); setInviteStatus('');
     try {
-      await api.post('/caregivers/invite', { caregiverEmail, relationship });
+      await api.post('https://mediremindplus.onrender.com/api/caregivers/invite', { caregiverEmail, relationship });
       setInviteStatus('Caregiver invited successfully!');
       setCaregiverEmail(''); setRelationship('');
     } catch (err) {

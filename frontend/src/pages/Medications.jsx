@@ -90,7 +90,7 @@ export default function Medications() {
     event.preventDefault();
     if (!formData.name.trim()) return;
     try {
-      const res = await api.post('/medications', {
+      const res = await api.post('https://mediremindplus.onrender.com/api/medications', {
         name: formData.name.trim(),
         dosage: formData.dosage.trim(),
         quantity: Number(formData.quantity) || 0,
