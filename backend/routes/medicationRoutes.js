@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getMedications,
-  getMedicationStats,
+  Medications,
+  MedicationStats,
   createMedication,
   updateMedication,
   updateMedicationStatus,
@@ -11,10 +11,10 @@ const {
 const { protect } = require('../middleware/auth');
 
 // Dashboard stats
-router.get('/stats', protect, getMedicationStats);
+router.get('/stats', protect, MedicationStats);
 
 // CRUD
-router.get('/', protect, getMedications);
+router.get('/', protect, Medications);
 router.post('/', protect, createMedication);
 router.patch('/:id', protect, updateMedication);
 router.patch('/:id/status', protect, updateMedicationStatus);

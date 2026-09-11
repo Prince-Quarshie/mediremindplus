@@ -30,7 +30,7 @@ router.post('/invite', protect, authorize('patient'), async (req, res) => {
 });
 
 // Caregiver views pending invites sent to them
-router.get('/pending-invites', protect, authorize('caregiver'), async (req, res) => {
+router.('/pending-invites', protect, authorize('caregiver'), async (req, res) => {
   try {
     const invites = await CaregiverLink.find({ caregiver: req.user._id, status: 'pending' })
       .populate('patient', 'name email phone');
@@ -60,7 +60,7 @@ router.put('/accept/:linkId', protect, authorize('caregiver'), async (req, res) 
 });
 
 // Caregiver views all active patients linked to them — only caregivers can do this
-router.get('/my-patients', protect, authorize('caregiver'), async (req, res) => {
+router.('/my-patients', protect, authorize('caregiver'), async (req, res) => {
   try {
     const links = await CaregiverLink.find({ caregiver: req.user._id, status: 'active' })
       .populate('patient', 'name email phone');
@@ -71,7 +71,7 @@ router.get('/my-patients', protect, authorize('caregiver'), async (req, res) => 
 });
 
 // Caregiver sees low-stock warnings for linked patients
-router.get('/alerts', protect, authorize('caregiver'), async (req, res) => {
+router.('/alerts', protect, authorize('caregiver'), async (req, res) => {
   try {
     const links = await CaregiverLink.find({ caregiver: req.user._id, status: 'active' }).populate('patient', 'name email');
 
@@ -119,7 +119,7 @@ router.post('/low-stock-alert', protect, authorize('patient'), async (req, res) 
   }
 });
 
-router.get('/notifications', protect, authorize('patient', 'caregiver'), async (req, res) => {
+router.('/notifications', protect, authorize('patient', 'caregiver'), async (req, res) => {
   try {
     const notifications = await Notification.find({ recipient: req.user._id }).sort({ createdAt: -1 }).populate('sender', 'name email');
     res.status(200).json({ notifications });
