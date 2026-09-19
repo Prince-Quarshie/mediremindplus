@@ -336,3 +336,12 @@ exports.deleteMedication = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+module.exports = {
+  getMedications: exports.getMedications,
+  getMedicationStats: exports.getMedicationStats,
+  createMedication: exports.createMedication,
+  updateMedication: exports.updateMedication,
+  updateMedicationStatus: exports.updateMedicationStatus,
+  deleteMedication: exports.deleteMedication,
+};
