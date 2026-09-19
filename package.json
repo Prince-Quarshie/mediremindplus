@@ -1,4 +1,10 @@
 {
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix frontend run dev",
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build"
+  },
   "dependencies": {
     "express": "^5.2.1",
     "express-validator": "^7.3.2",
